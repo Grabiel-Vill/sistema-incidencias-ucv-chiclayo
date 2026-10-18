@@ -1,0 +1,96 @@
+:root {
+  /* Escala neutra */
+  --gris-50: #f8fafc;
+  --gris-100: #f1f5f9;
+  --gris-200: #e2e8f0;
+  --gris-300: #cbd5e1;
+  --gris-400: #94a3b8;
+  --gris-500: #64748b;
+  --gris-600: #475569;
+  --gris-700: #334155;
+  --gris-800: #1e293b;
+  --gris-900: #0f172a;
+
+  /* Marca */
+  --marca-50: #eef2ff;
+  --marca-100: #e0e7ff;
+  --marca-400: #818cf8;
+  --marca-500: #6366f1;
+  --marca-600: #4f46e5;
+  --marca-700: #4338ca;
+
+  /* Semanticos */
+  --exito-50: #ecfdf5;
+  --exito-500: #10b981;
+  --exito-600: #059669;
+  --alerta-50: #fffbeb;
+  --alerta-500: #f59e0b;
+  --alerta-600: #d97706;
+  --peligro-50: #fef2f2;
+  --peligro-500: #ef4444;
+  --peligro-600: #dc2626;
+  --info-50: #eff6ff;
+  --info-500: #3b82f6;
+  --info-600: #2563eb;
+
+  /* Alias funcionales usados por el resto de hojas */
+  --color-fondo: var(--gris-50);
+  --color-superficie: #ffffff;
+  --color-texto: var(--gris-900);
+  --color-texto-tenue: var(--gris-500);
+  --color-borde: var(--gris-200);
+  --color-primario: var(--gris-900);
+  --color-acento: var(--marca-600);
+  --color-acento-hover: var(--marca-700);
+
+  /* PrioridadEnum / EstadoIncidenciaEnum / EstadoEquipoEnum */
+  --color-alta: var(--peligro-500);
+  --color-media: var(--alerta-500);
+  --color-baja: var(--exito-500);
+  --color-recibido: var(--gris-500);
+  --color-programado: var(--info-500);
+  --color-en-proceso: var(--alerta-500);
+  --color-resuelto: var(--exito-500);
+  --color-operativo: var(--exito-500);
+  --color-defectuoso: var(--peligro-500);
+  --color-en-mantenimiento: var(--alerta-500);
+
+  /* Espaciado (escala de 4px) */
+  --espacio-2xs: 0.25rem;
+  --espacio-xs: 0.5rem;
+  --espacio-sm: 0.75rem;
+  --espacio-md: 1rem;
+  --espacio-lg: 1.5rem;
+  --espacio-xl: 2rem;
+  --espacio-2xl: 3rem;
+
+  /* Radios */
+  --radio-sm: 6px;
+  --radio-md: 10px;
+  --radio-lg: 16px;
+  --radio-full: 999px;
+
+  /* Sombras */
+  --sombra-xs: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --sombra-sm: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --sombra-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --sombra-lg: 0 12px 32px rgba(15, 23, 42, 0.14);
+
+  /* Tipografia */
+  --fuente-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --texto-xs: 0.75rem;
+  --texto-sm: 0.8125rem;
+  --texto-base: 0.9375rem;
+  --texto-md: 1.0625rem;
+  --texto-lg: 1.25rem;
+  --texto-xl: 1.5rem;
+  --texto-2xl: 1.875rem;
+
+  /* Transiciones */
+  --transicion-rapida: 120ms ease;
+  --transicion-base: 180ms ease;
+
+  /* Layout */
+  --ancho-sidebar: 15.5rem;
+  --alto-topbar: 3.75rem;
+}

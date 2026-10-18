@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingresar - Sistema de Incidencias UCV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+  <link rel="stylesheet" href="../styles/pages.css" />
+</head>
+<body class="pagina-login">
+  <aside class="login-panel-marca" aria-hidden="true">
+    <!-- Si colocas una foto real en ../assets/foto-laboratorio.jpg (o .png / .webp), reemplaza
+         esta ilustracion CSS generada como respaldo (ver script al final del archivo). -->
+    <div class="login-panel-ilustracion" id="ilustracion-login">
+      <div class="login-panel-monitores">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="login-panel-contenido">
+      <p class="login-panel-etiqueta">Bienvenido a</p>
+      <h1 class="login-panel-titulo">Sistema de Incidencias de Laboratorio</h1>
+    </div>
+    <span class="login-panel-pie">Campus Chiclayo</span>
+  </aside>
+
+  <main class="login-panel-formulario">
+    <div class="login-columna">
+      <div class="tarjeta-login">
+        <header class="login-marca">
+          <!-- Si colocas el logo oficial en ../assets/logo-ucv.svg (o .png), reemplaza este
+               respaldo generado automaticamente (ver script al final del archivo). -->
+          <div class="login-logo" id="logo-ucv">
+            <svg viewBox="0 0 64 64" role="img" aria-label="UCV">
+              <defs>
+                <linearGradient id="lg-g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#16305c" /><stop offset="1" stop-color="#e3000f" />
+                </linearGradient>
+              </defs>
+              <path d="M32 3 57 12v21c0 15-10.5 24.5-25 29C17.500 57.500 7 48 7 33V12Z" fill="url(#lg-g)" />
+              <path d="M32 3 57 12v21c0 15-10.500 24.500-25 29V3Z" fill="#fff" opacity=".1" />
+              <text x="32" y="38" text-anchor="middle" font-family="Sora, Inter, sans-serif" font-weight="800" font-size="19" fill="#fff" letter-spacing="-0.5">UCV</text>
+            </svg>
+          </div>
+          <div class="login-marca-texto">
+            <span class="login-marca-uni">Universidad César Vallejo</span>
+          </div>
+        </header>
+
+        <div id="contenedor-login"></div>
+      </div>
+
+      <footer class="login-pie-pagina">
+        <a href="#" data-info="Escríbenos a soporte para recibir ayuda con tu acceso.">Ayuda</a>
+        <a href="#" data-info="Tus datos se usan solo para gestionar incidencias de laboratorio.">Privacidad</a>
+        <span>© 2026 Universidad César Vallejo</span>
+      </footer>
+    </div>
+  </main>
+
+  <script type="module">
+    import { LoginController } from "../js/controllers/LoginController.js";
+    import { Toast } from "../js/components/Toast.js";
+
+    // Si colocas el logo oficial en ../assets/logo-ucv.svg (o .png), reemplaza al logo de respaldo.
+    for (const ruta of ["../assets/logo-ucv.svg", "../assets/logo-ucv.png"]) {
+      const img = new Image();
+      img.alt = "Universidad César Vallejo";
+      img.onload = () => {
+        const cont = document.getElementById("logo-ucv");
+        if (!cont.dataset.oficial) { cont.dataset.oficial = "1"; cont.replaceChildren(img); }
+      };
+      img.src = ruta;
+    }
+
+    // Si colocas una foto real en ../assets/foto-laboratorio.jpg (.png / .webp), reemplaza
+    // la ilustracion CSS de respaldo del panel izquierdo.
+    for (const ruta of ["../assets/foto-laboratorio.jpg", "../assets/foto-laboratorio.png", "../assets/foto-laboratorio.webp"]) {
+      const img = new Image();
+      img.onload = () => {
+        const cont = document.getElementById("ilustracion-login");
+        if (!cont.dataset.oficial) {
+          cont.dataset.oficial = "1";
+          cont.classList.add("tiene-foto");
+          cont.style.backgroundImage = `url("${ruta}")`;
+        }
+      };
+      img.src = ruta;
+    }
+
+    document.querySelectorAll("[data-info]").forEach((a) =>
+      a.addEventListener("click", (e) => { e.preventDefault(); Toast.info(a.dataset.info); }));
+
+    new LoginController(document.getElementById("contenedor-login"));
+  </script>
+</body>
+</html>

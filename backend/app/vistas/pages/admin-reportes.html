@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reportes - Sistema de Incidencias UCV</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+  <link rel="stylesheet" href="../styles/pages.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside id="contenedor-sidebar"></aside>
+    <div class="app-shell-principal">
+      <header id="contenedor-topbar"></header>
+      <main class="contenedor-pagina">
+        <section id="contenedor-generar-reporte" aria-label="Generar nuevo reporte"></section>
+        <section id="contenedor-historial-reportes" aria-label="Historial de reportes"></section>
+      </main>
+    </div>
+  </div>
+
+  <script type="module">
+    import { AdminReportesController } from "../js/controllers/AdminReportesController.js";
+    new AdminReportesController(document.body);
+  </script>
+</body>
+</html>

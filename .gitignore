@@ -1,0 +1,29 @@
+# Entornos y credenciales
+.env
+*.env
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Node (si se usa alguna herramienta de desarrollo)
+node_modules/
+
+# Archivos subidos por usuarios (evidencias de incidencias)
+backend/storage/evidencias/*
+!backend/storage/evidencias/.gitkeep
+
+# Editor / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

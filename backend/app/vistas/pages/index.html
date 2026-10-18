@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Incidencias UCV Chiclayo</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+</head>
+<body>
+  <script type="module">
+    import { SessionStore } from "../js/state/SessionStore.js";
+
+    const DESTINO_POR_ROL = {
+      DOCENTE: "docente-panel.html",
+      TECNICO: "tecnico-bandeja.html",
+      ADMINISTRADOR: "admin-dashboard.html",
+    };
+
+    const usuario = SessionStore.estaAutenticado() ? SessionStore.obtenerUsuario() : null;
+    window.location.href = usuario ? DESTINO_POR_ROL[usuario.rol] || "login.html" : "login.html";
+  </script>
+</body>
+</html>

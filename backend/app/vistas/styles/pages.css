@@ -1,0 +1,366 @@
+/* ===== Login (panel dividido, colores institucionales UCV: azul marino + rojo) ===== */
+.pagina-login {
+  --lg-navy-1: #0a1730;
+  --lg-navy-2: #16305c;
+  --lg-navy-3: #1f3f73;
+  --lg-red: #e3000f;
+  --lg-red-dark: #b4000c;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  font-size: var(--texto-base);
+}
+
+/* Panel izquierdo: ilustracion de laboratorio (CSS, no es una foto real) que se funde en
+   azul marino hacia abajo, con el mensaje de bienvenida centrado sobre esa base solida. */
+.login-panel-marca {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 3rem 2.5rem;
+  color: #ffffff;
+  background: var(--lg-navy-1);
+  overflow: hidden;
+}
+
+.login-panel-ilustracion {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Si se coloca una foto real en ../assets/foto-laboratorio.(jpg|png|webp), el script de
+   login.html la detecta y agrega esta clase: usa la foto como fondo y oculta la grilla
+   CSS de "monitores" generada como respaldo. */
+.login-panel-ilustracion.tiene-foto {
+  background-size: cover;
+  background-position: center;
+}
+.login-panel-ilustracion.tiene-foto .login-panel-monitores {
+  display: none;
+}
+
+/* Grilla de "monitores" (simple ilustracion CSS evocando un laboratorio de computo; no
+   sustituye una foto real, pero evita inventar una imagen que no tenemos). */
+.login-panel-monitores {
+  position: absolute;
+  top: 9%;
+  left: 9%;
+  right: 9%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+}
+.login-panel-monitores span {
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  background: linear-gradient(160deg, #2c4d7d, var(--lg-navy-2));
+  box-shadow: 0 0 16px rgba(56, 170, 255, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.login-panel-monitores span:nth-child(4n) {
+  box-shadow: 0 0 16px rgba(94, 234, 212, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.login-panel-ilustracion::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 23, 48, 0.1) 0%, rgba(10, 23, 48, 0.6) 55%, var(--lg-navy-1) 90%);
+}
+
+.login-panel-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 24rem;
+}
+
+.login-panel-etiqueta {
+  margin: 0 0 var(--espacio-xs);
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ff5a63;
+}
+
+.login-panel-titulo {
+  margin: 0;
+  font-family: "Sora", var(--fuente-base);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.login-panel-pie {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--espacio-lg);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Panel derecho: tarjeta blanca flotante sobre fondo gris muy claro. */
+.login-panel-formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--gris-50);
+}
+
+.login-columna {
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+}
+
+.tarjeta-login {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid var(--gris-100);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+  padding: 2.25rem 2.25rem 2rem;
+}
+
+.login-marca {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-md);
+  margin-bottom: var(--espacio-lg);
+  padding-bottom: var(--espacio-md);
+  border-bottom: 1px solid var(--gris-100);
+}
+
+.login-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+.login-logo svg, .login-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.login-marca-texto { display: flex; flex-direction: column; line-height: 1.25; }
+.login-marca-uni {
+  font-family: "Sora", var(--fuente-base);
+  font-size: var(--texto-md);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--lg-navy-2);
+}
+
+.login-pie-pagina {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espacio-md);
+  font-size: var(--texto-xs);
+  color: var(--gris-400);
+}
+.login-pie-pagina a { color: var(--gris-500); text-decoration: none; font-weight: 600; }
+.login-pie-pagina a:hover { color: var(--lg-red); text-decoration: underline; }
+
+.login-encabezado {
+  margin-bottom: 0;
+}
+
+.login-encabezado h1 {
+  margin: 0 0 var(--espacio-2xs);
+  font-family: "Sora", var(--fuente-base);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--gris-900);
+  text-wrap: balance;
+}
+
+.login-encabezado p {
+  margin: 0;
+  color: var(--gris-500);
+  font-size: var(--texto-base);
+}
+
+.formulario-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.formulario-login label {
+  font-size: var(--texto-sm);
+  color: var(--gris-700);
+}
+
+.login-caja {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-caja input {
+  height: 2.75rem;
+  font-size: var(--texto-base);
+  padding-left: 2.5rem;
+  padding-right: 0.875rem;
+  background: #ffffff;
+}
+
+.login-caja input[type="password"],
+.login-caja:has(.login-ojo) input {
+  padding-right: 2.75rem;
+}
+
+.login-caja-icono {
+  position: absolute;
+  left: 0.8rem;
+  display: inline-flex;
+  color: var(--gris-400);
+  pointer-events: none;
+  transition: color var(--transicion-rapida);
+}
+
+.login-caja:focus-within .login-caja-icono {
+  color: var(--lg-red);
+}
+
+.login-ojo {
+  position: absolute;
+  right: 0.35rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radio-sm);
+  background: transparent;
+  color: var(--gris-400);
+  cursor: pointer;
+  transition: color var(--transicion-rapida), background-color var(--transicion-rapida);
+}
+
+.login-ojo:hover {
+  color: var(--gris-700);
+  background: var(--gris-100);
+}
+
+.login-ojo:focus-visible {
+  outline: 2px solid var(--lg-red);
+  outline-offset: 2px;
+}
+
+.login-aviso {
+  min-height: 0;
+  margin-top: 4px;
+  font-size: var(--texto-xs);
+  color: var(--alerta-600);
+}
+
+.login-aviso:empty {
+  display: none;
+}
+
+.login-aviso.error {
+  color: var(--peligro-600);
+}
+
+.campo-formulario.con-error input {
+  border-color: var(--peligro-500);
+  box-shadow: 0 0 0 3px var(--peligro-50);
+}
+
+.formulario-login .login-boton {
+  width: 100%;
+  height: 2.85rem;
+  margin-top: var(--espacio-xs);
+  font-size: var(--texto-base);
+  background: linear-gradient(120deg, var(--lg-red), var(--lg-red-dark));
+  box-shadow: 0 6px 16px rgba(227, 0, 15, 0.3);
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.formulario-login .login-boton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(227, 0, 15, 0.4);
+}
+
+.login-spinner {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: login-giro 0.7s linear infinite;
+}
+
+@keyframes login-giro {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .pagina-login {
+    grid-template-columns: 1fr;
+  }
+  .login-panel-marca {
+    padding: 2.75rem 1.75rem;
+    min-height: 16rem;
+  }
+  .login-panel-titulo {
+    font-size: 1.6rem;
+  }
+  .login-panel-monitores {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .login-panel-marca {
+    padding: 2rem 1.5rem 1.75rem;
+    min-height: 19rem;
+  }
+  .login-panel-monitores {
+    grid-template-columns: repeat(4, 1fr);
+    top: 6%;
+  }
+  .login-panel-monitores span:nth-child(n + 5) {
+    display: none;
+  }
+  .login-panel-titulo {
+    font-size: 1.4rem;
+  }
+  .login-panel-formulario {
+    padding: 1.5rem 1rem;
+  }
+  .tarjeta-login {
+    padding: 1.75rem 1.5rem 1.5rem;
+    border-radius: 16px;
+  }
+}
+
+
+/* Dashboard administrativo */
+.contenedor-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--espacio-md);
+}
+
+.contenedor-graficos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-lg);
+}
+
+@media (min-width: 900px) {
+  .contenedor-graficos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
